@@ -3,12 +3,11 @@ export function saveLocal(list) {
 }
 
 export function status(elem, list) {
-  list.forEach((task) => {
-    if (task === elem) {
-      task.isCompleted = !task.isCompleted;
-    }
-  });
-  saveLocal(list);
+  const task = list.find((task) => task.id === elem.id);
+  if (task) {
+    task.isCompleted = !task.isCompleted;
+    saveLocal(list);
+  }
 }
 
 export function add(list) {
